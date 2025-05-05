@@ -32,8 +32,8 @@ def index():
     try:
         if len(message) > 0:
             vectorize_message = Vectorizer.transform([message])
-            predict = Classifier.predict(vectorize_message)[0]
-            predict_proba = Classifier.predict_proba(vectorize_message).tolist()  
+            label = Classifier.predict(vectorize_message)[0]
+            predict = "Messaggio normale" if label == "ham" else "Spam"
     except BaseException as ints:
         error = str(type(ints).__name__) + ' ' + str(ints)
     return jsonify(
