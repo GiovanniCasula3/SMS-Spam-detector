@@ -1,12 +1,3 @@
-
-
-
-          
-# Aggiunta di esempi al README.md
-
-Ho notato che desideri aggiungere degli esempi al tuo file README.md per il rilevatore di spam SMS. Ecco come potrei migliorarlo aggiungendo una sezione di esempi:
-
-```markdown:/Users/giovannicasula/Developer/SMS Spam Detector/README.md
 # SMS Spam Detector
 
 A machine learning application that detects whether an SMS message is spam or not.
@@ -31,13 +22,13 @@ A machine learning application that detects whether an SMS message is spam or no
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/sms-spam-detector.git
+   git clone https://github.com/GiovanniCasula3/SMS-Spam-detector 
    cd sms-spam-detector
    ```
 
 2. Install the required dependencies:
    ```
-   pip install flask scikit-learn pandas
+   pip install -r requirements.txt
    ```
 
 3. Run the application:
@@ -56,7 +47,24 @@ A machine learning application that detects whether an SMS message is spam or no
 2. Click the "Check" button
 3. The application will classify the message as either "Normal Message" or "Spam"
 
-## Examples
+### Programmatic Usage
+
+If you want to use the model directly from Python, here is how you can do it:
+
+```python
+from joblib import load
+
+# Load model and vectorizer (assuming you've saved them)
+classifier = load("model.joblib")
+vectorizer = load("vectorizer.joblib")
+
+message = "Congratulations! You've won a prize. Click here to claim."
+vector = vectorizer.transform([message])
+prediction = classifier.predict(vector)[0]
+print("Spam" if prediction != "ham" else "Messaggio normale")
+```
+
+## Web Interface Examples
 
 ### Example 1: Normal Message (Ham)
 Input:
@@ -65,7 +73,7 @@ Hey, what time are we meeting for dinner tonight?
 ```
 Output:
 ```
-Messaggio normale
+Normal message, or Ham
 ```
 
 ### Example 2: Spam Message
@@ -108,4 +116,3 @@ Spam
 ## Model Information
 
 The application uses a Support Vector Machine (SVM) classifier with a linear kernel. The text is vectorized using TF-IDF (Term Frequency-Inverse Document Frequency) to convert the text messages into numerical features that can be used by the machine learning algorithm.
-```
