@@ -2,6 +2,10 @@
 
 A machine learning application that detects whether an SMS message is spam or not.
 
+## Disclaimer
+
+This model has significant potential for improvement with access to a larger and more diverse dataset. At its current stage, it is still possible to craft spam messages that bypass the classifier. However, the current performance is quite impressive considering the model was trained on just 500 KB of data.
+
 ## Features
 
 - Real-time SMS message classification
