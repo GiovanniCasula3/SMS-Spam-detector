@@ -36,9 +36,8 @@ def index():
             predict = "Messaggio normale" if label == "ham" else "Spam"
     except BaseException as ints:
         error = str(type(ints).__name__) + ' ' + str(ints)
-    return jsonify(
-        message = message, predict_proba = predict_proba,
-        predict = predict, error = error
+    return render_template(
+        'index.html', message=message, predict=predict, error=error
     )
     
 if __name__ == '__main__':
